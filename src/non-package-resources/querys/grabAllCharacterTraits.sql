@@ -1,0 +1,1 @@
+SELECT * FROM cassio_aesop.character_traits;
