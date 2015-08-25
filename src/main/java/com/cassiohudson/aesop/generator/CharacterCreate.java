@@ -22,8 +22,7 @@ public class CharacterCreate implements ActionListener{
 		HashMap<CharacterTraitType, String> hash = new CharacterTraitHome().getRandomCharacterTraits();
 		return new Character(new CharacterStats(), hash);
 	}
-	
-	@Override
+
 	public void actionPerformed(ActionEvent e){
 		Character c = createCharacter();
 		CreateOutputFile.outPutFile(c.getBio(), PATH.concat(c.getName().getFileName()));

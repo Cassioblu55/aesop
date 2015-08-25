@@ -44,25 +44,25 @@ public class TavernTraitHome extends GenericDAO implements TavernTraitService {
 	}
 	
 	
-	@Override
+	
 	public List<TavernTrait> findByType(TavenTraitType type) {
 		String sql = this.getQueryPath() + "`type` LIKE '".concat(type.toString()).concat("'");
 		return getResuts(sql);
 	}
 
-	@Override
+	
 	public TavernTrait findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public TavernTrait findByTrait(String trait) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public void insertTraitByType(String type, List<String> list) {
 		try {
 			Connection con = new ConnectionUtils().newConnection();
@@ -101,12 +101,12 @@ public class TavernTraitHome extends GenericDAO implements TavernTraitService {
 		return list;
 	}
 
-	@Override
+	
 	public String getInsertPath() {
 		return INSERT_START.concat(DATA_TABLE).concat(INSERT_END);
 	}
 
-	@Override
+	
 	public String getQueryPath() {
 		return QUERY_START.concat(DATA_TABLE).concat(QUERY_END);
 	}

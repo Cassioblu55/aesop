@@ -42,18 +42,18 @@ public class SettelementTraitHome extends GenericDAO implements SettelementTrait
 		return hash;
 	}
 	
-	@Override
+	
 	public String getQueryPath() {
 		return QUERY_START.concat(DATA_TABLE).concat(QUERY_END);
 	}
 	
-	@Override
+	
 	public String getInsertPath() {
 		return INSERT_START.concat(DATA_TABLE).concat(INSERT_END);
 	}
 	
 	
-	@Override
+	
 	public List<SettelementTrait> findByType(SettelemntTraitType type) {
 		String sql = this.getQueryPath() + "`type` LIKE '".concat(type.toString()).concat("'");
 		return getResuts(sql);
@@ -72,13 +72,13 @@ public class SettelementTraitHome extends GenericDAO implements SettelementTrait
 		}
 	}
 
-	@Override
+	
 	public SettelementTrait findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public SettelementTrait findByTrait(String trait) {
 		// TODO Auto-generated method stub
 		return null;

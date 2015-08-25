@@ -39,7 +39,6 @@ public class CharacterExperienceFrame {
 			final JButton button = new JButton("Add");
 			button.addActionListener(new ActionListener() {
 				
-				@Override
 				public void actionPerformed(ActionEvent e) {
 					Integer i = Integer.parseInt(jtf.getText());					
 					new CharacterExperienceHome().addExperience(ce, i);

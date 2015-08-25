@@ -28,7 +28,6 @@ public class TavenCreate implements ActionListener{
 		return new Tavern(hash);
 	}
 	
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		Tavern tavern = createTavern();
 		String bio = tavern.getBio();

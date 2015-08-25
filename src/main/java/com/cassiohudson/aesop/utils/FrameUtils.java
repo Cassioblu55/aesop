@@ -55,7 +55,7 @@ public class FrameUtils {
 		
 		JButton button = new JButton(buttonText);
 		button.addActionListener(new ActionListener() {
-			@Override
+			
 			public void actionPerformed(ActionEvent e) {
 				goTo.setVisible(true);
 				from.setVisible(false);

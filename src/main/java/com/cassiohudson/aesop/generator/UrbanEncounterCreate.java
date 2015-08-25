@@ -14,7 +14,6 @@ public class UrbanEncounterCreate implements ActionListener {
 	private static final String PATH = Aesop.ASSEST_PATH.concat("UrbanEncounters//");
 	private final List<Encounter> data = new UrbanEncounterHome().getEncounters();
 	
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		Encounter ue = this.getUrbanEncounter();
 		CreateOutputFile.outPutFile(ue.getBio(), PATH.concat(ue.getFileName()));

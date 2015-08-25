@@ -9,9 +9,7 @@ import com.cassiohudson.aesop.userInterface.CharacterExperienceFrame;
 import com.cassiohudson.aesop.utils.FrameUtils;
 
 public class Aesop {
-	
-	//This is a test
-	
+		
 	public static final String RESOURCE_PATH = "src//main//resources//";
 	public static final String ASSEST_PATH ="assets//Generated Assests//"; 
 	public static final String TXT_EXT = ".txt";
@@ -49,12 +47,12 @@ public class Aesop {
 	public static String getRandomString(List<String> list){
 		return list.get(new Random().nextInt((list.size())));
 	}
-	
-	
+
 	public static Integer getNormalRandom(Double sd, Integer average){
 		return new Integer((int) (new Random().nextGaussian()*sd)+average);
 	}
 	
+	//Returns inclusive random number
 	public static Integer getRandom(Integer min, Integer max){
 		
 		return new Random().nextInt((max - min) + 1)+min;

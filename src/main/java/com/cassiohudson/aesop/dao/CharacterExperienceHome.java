@@ -15,7 +15,7 @@ public class CharacterExperienceHome  extends GenericDAO implements CharacterExp
 		super(DATA_TABLE);
 	}	
 	
-	@Override
+	
 	public List<CharacterExperience> getAllCharacters() {
 		ResultSet rs = ConnectionUtils.getResults(this.getAllQuery());
 		List<CharacterExperience> list = new ArrayList<CharacterExperience>();
@@ -32,7 +32,7 @@ public class CharacterExperienceHome  extends GenericDAO implements CharacterExp
 		return list;
 	}
 
-	@Override
+	
 	public void addExperience(CharacterExperience ce, Integer ex) {
 		Integer newXP = ce.getExperience()+ex;
 		String sql = "UPDATE ".concat(isq(DATA_TABLE)).concat(" SET ")

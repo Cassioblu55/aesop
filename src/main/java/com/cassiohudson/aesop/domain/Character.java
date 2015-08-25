@@ -36,7 +36,6 @@ public class Character implements Assest{
 		return name;
 	}
 
-	@Override
 	public String getFileName() {
 		return this.name.getFileName();
 	}

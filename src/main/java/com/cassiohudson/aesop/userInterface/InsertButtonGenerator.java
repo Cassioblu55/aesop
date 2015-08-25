@@ -30,7 +30,6 @@ public class InsertButtonGenerator {
 	private static JButton getCharacterTraitInsert(){
 		JButton button = new JButton("Insert Character Data");
 		button.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				//InsertAllCSVData.insertChracterTraits();				
 			}
@@ -41,7 +40,7 @@ public class InsertButtonGenerator {
 	private static JButton getTavernTraitInsert(){
 		JButton button = new JButton("Insert Tavern Data");
 		button.addActionListener(new ActionListener() {
-			@Override
+			
 			public void actionPerformed(ActionEvent e) {
 				InsertAllCSVData.insertTavernTraits();				
 			}
@@ -52,7 +51,7 @@ public class InsertButtonGenerator {
 	private static JButton getSettelmentTraitInsert(){
 		JButton button = new JButton("Insert Settelment Data");
 		button.addActionListener(new ActionListener() {
-			@Override
+			
 			public void actionPerformed(ActionEvent e) {
 				InsertAllCSVData.insertSettelmentTraits();				
 			}
@@ -63,7 +62,7 @@ public class InsertButtonGenerator {
 	private static JButton getDungeonTraitInsert(){
 		JButton button = new JButton("Insert Dungeon Data");
 		button.addActionListener(new ActionListener() {
-			@Override
+			
 			public void actionPerformed(ActionEvent e) {
 				new DungeonTraitHome().insertAllData();				
 			}
@@ -74,7 +73,7 @@ public class InsertButtonGenerator {
 	private static JButton getVillianTraitInsert(){
 		JButton button = new JButton("Insert Villian Data");
 		button.addActionListener(new ActionListener() {
-			@Override
+			
 			public void actionPerformed(ActionEvent e) {
 				new VillainTraitHome().insertAllData();;				
 			}
@@ -86,7 +85,7 @@ public class InsertButtonGenerator {
 	private static JButton goToMenu(){
 		JButton button = new JButton("Main Menu");
 		button.addActionListener(new ActionListener() {
-			@Override
+			
 			public void actionPerformed(ActionEvent e) {
 				Aesop.MAIN_MENU.setVisible(true);
 				InsertData.INSERT_MENU.setVisible(false);

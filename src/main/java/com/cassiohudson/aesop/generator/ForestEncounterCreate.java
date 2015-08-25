@@ -15,8 +15,6 @@ public class ForestEncounterCreate implements ActionListener {
 	private static final String PATH = Aesop.ASSEST_PATH.concat("ForestEncounters//");
 	private final List<Encounter> data = new ForestEncounterHome().getAllData();
 
-	
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		Encounter ue = this.getUrbanEncounter();
 		CreateOutputFile.outPutFile(ue.getBio(), PATH.concat(ue.getFileName()));

@@ -13,14 +13,14 @@ public class Tavern implements Assest {
 		this.hash = hash;
 	}
 	
-	@Override
+	
 	public String getBio() {
 		String bio = Aesop.addLine(hash.get(TavenTraitType.FIRST_NAME).concat(" ").concat(hash.get(TavenTraitType.LAST_NAME)));
 		bio = bio.concat(Aesop.addLine(hash.get(TavenTraitType.TYPE)));
 		return bio;
 	}
 
-	@Override
+	
 	public String getFileName() {
 		String firstName = hash.get(TavenTraitType.FIRST_NAME).replace(" ", "_");
 		String lastName = hash.get(TavenTraitType.LAST_NAME).replace(" ", "_");

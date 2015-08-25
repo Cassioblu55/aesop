@@ -29,7 +29,6 @@ public class SettelementCreate implements ActionListener{
 		return new Settelement(hash);
 	}
 		
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		Settelement s = this.getSettelement();
 		CreateOutputFile.outPutFile(s.getBio(), PATH.concat(s.getFileName()));
