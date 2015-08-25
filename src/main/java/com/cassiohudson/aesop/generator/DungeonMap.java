@@ -10,7 +10,7 @@ import java.util.Random;
 import java.util.Set;
 
 import com.cassiohudson.aesop.domain.Dungeon;
-import com.cassiohudson.aesop.generator.CreateDungeonMap.MapSize;
+import com.cassiohudson.aesop.generator.DungeonMapCreate.MapSize;
 import com.cassiohudson.aesop.generator.DungeonSquare.SquareType;
 
 public class DungeonMap {
@@ -27,10 +27,9 @@ public class DungeonMap {
 		this.map = map;
 		this.size = size;
 		this.dungeon = dungeon;
-		generateMap();
 	}
-	
-	private void generateMap(){
+
+	public void generateMap(){
 		Integer size = this.map.size();
 		//Set Start
 		DungeonSquare start = this.getSquare(new Random().nextInt(size), 0);
@@ -103,7 +102,7 @@ public class DungeonMap {
 	}
 	
 	private HashMap<MapSize, Integer> getSizeHashMap() {
-		HashMap<MapSize, Integer> hash = new HashMap<CreateDungeonMap.MapSize, Integer>();
+		HashMap<MapSize, Integer> hash = new HashMap<DungeonMapCreate.MapSize, Integer>();
 		hash.put(MapSize.LARGE, 50);
 		hash.put(MapSize.MEDIUM, 30);
 		hash.put(MapSize.SMALL, 15);

@@ -7,17 +7,17 @@ import java.util.Random;
 import com.cassiohudson.aesop.domain.Dungeon;
 import com.cassiohudson.aesop.domain.DungeonTraitType;
 
-public class CreateDungeonMap {
+public class DungeonMapCreate {
 
 	private Dungeon dungeon;
 	
 	public enum  MapSize {LARGE, MEDIUM, SMALL};
 
-	public CreateDungeonMap(Dungeon dungeon){
+	public DungeonMapCreate(Dungeon dungeon){
 		this.dungeon = dungeon;
 	}
 	
-	private List<List<DungeonSquare>> getBlankMap(MapSize size){
+	public List<List<DungeonSquare>> getBlankMap(MapSize size){
 		List<List<DungeonSquare>> masterList = new ArrayList<List<DungeonSquare>>();
 		for(Integer y=0; y<this.getSize(size); y++){
 			List<DungeonSquare> row = new ArrayList<DungeonSquare>();

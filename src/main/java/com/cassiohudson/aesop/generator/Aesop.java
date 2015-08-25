@@ -28,7 +28,7 @@ public class Aesop {
 		EXPERIENCE_MENU.setVisible(true);
 		MAIN_MENU.setVisible(true);	
 		
-		DungeonMap map= new CreateDungeonMap(new DungeonCreate().getDungeon()).getMap();
+		DungeonMap map= new DungeonMapCreate(new DungeonCreate().getDungeon()).getMap();
 		map.mapDisplay();
 	}
 
