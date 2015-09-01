@@ -13,7 +13,8 @@ public class DungeonCreate implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		Dungeon d = this.getDungeon();
-		CreateOutputFile.outPutFile(d.getBio(), PATH.concat(d.getFileName()));
+		DungeonMap map= new DungeonMapCreate(new DungeonCreate().getDungeon()).getMap();
+		CreateOutputFile.outPutFile(map.getBio(), PATH.concat(d.getFileName()));
 	}
 
 	public Dungeon getDungeon() {

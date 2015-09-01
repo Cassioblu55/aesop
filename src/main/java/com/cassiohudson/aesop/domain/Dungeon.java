@@ -16,7 +16,7 @@ public class Dungeon {
 		String bio = Aesop.addLine(traits.get(DungeonTraitType.NAME).getTrait());
 		for(DungeonTraitType type : traits.keySet()){
 			if(type != DungeonTraitType.NAME){
-				bio = bio.concat(Aesop.addLine(traits.get(type).getBio()));
+				bio = bio.concat(Aesop.nextLine(traits.get(type).getBio()));
 			}
 		}
 		return bio;

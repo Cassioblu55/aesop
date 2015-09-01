@@ -45,9 +45,9 @@ public class DungeonMapCreate {
 	private Integer getSize(MapSize size){
 		switch (size) {
 		case LARGE:
-			return 20;
+			return 12;
 		case MEDIUM:
-			return 10;
+			return 8;
 		case SMALL:
 			return 6;
 		default:

@@ -17,7 +17,7 @@ public class Aesop {
 	
 	public static final String DATABASE = "cassio_aesop";
 	
-	public static final Integer HEIGHT = 100;
+	public static final Integer HEIGHT = 300;
 	public static final Integer WIDTH = 500;
 	
 	public static final JFrame MAIN_MENU = FrameUtils.getMainFrame();
@@ -27,9 +27,6 @@ public class Aesop {
 		//Create and set up the window.
 		EXPERIENCE_MENU.setVisible(true);
 		MAIN_MENU.setVisible(true);	
-		
-		DungeonMap map= new DungeonMapCreate(new DungeonCreate().getDungeon()).getMap();
-		map.mapDisplay();
 	}
 
 	public static String addLine(String line){
@@ -43,6 +40,13 @@ public class Aesop {
 		}
 		return s;
 	}
+	public static String addBlankLine(){
+		return new String().concat("\n");
+	}
+	
+	public static String nextLine(String line){
+		return line.concat("\n");
+	}
 	
 	public static String getRandomString(List<String> list){
 		return list.get(new Random().nextInt((list.size())));
@@ -54,7 +58,6 @@ public class Aesop {
 	
 	//Returns inclusive random number
 	public static Integer getRandom(Integer min, Integer max){
-		
 		return new Random().nextInt((max - min) + 1)+min;
 	}
 	
