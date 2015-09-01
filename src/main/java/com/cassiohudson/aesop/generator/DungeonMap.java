@@ -10,6 +10,7 @@ import java.util.Random;
 import java.util.Set;
 
 import com.cassiohudson.aesop.domain.Dungeon;
+import com.cassiohudson.aesop.domain.DungeonTraitType;
 import com.cassiohudson.aesop.generator.DungeonMapCreate.MapSize;
 import com.cassiohudson.aesop.generator.DungeonSquare.SquareType;
 
@@ -41,15 +42,33 @@ public class DungeonMap {
 		start.setType(SquareType.START);
 		this.usedSquares.add(start.getPosition());
 		this.buildBranch(start, Direction.DOWN);
-		//Will not try to make more then 1000 attempts make a branch
+		//Will not try to make more then 1000 attempts to make a branch
 		Integer count =new Integer(0);
 		while (this.usedSquares.size() < hash.get(this.size) && count<1000) {
 			DungeonSquare s = getRandomActiveSquare();
 			this.buildBranch(s, getRandomDirection());
 			count++;
 		}
+		for(Integer i=0; i<this.getTrapNumber(); i++){
+			DungeonSquare s = getRandomActiveSquare();
+			s.setType(SquareType.TRAP);
+		}
+		
 
 	}
+	
+	private Integer getTrapNumber(){
+		Integer trapNumber=0;
+		String purpose = this.dungeon.getTraits().get(DungeonTraitType.PURPOSE).getTrait();
+		if(purpose.equals("Death trap")){trapNumber+=4;}
+		if(purpose.equals("Lair")){trapNumber+=2;}
+		if(purpose.equals("Stronghold")){trapNumber+=2;}
+		if(purpose.equals("Tomb")){trapNumber+=3;}
+		if(purpose.equals("Treasure vault")){trapNumber+=3;}
+		if(purpose.equals("Maze")){trapNumber+=2;}
+		return trapNumber;
+	}
+
 
 	private DungeonSquare getRandomActiveSquare() {
 		List<Position> activeList = new ArrayList<Position>(this.usedSquares);

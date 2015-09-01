@@ -6,7 +6,7 @@ public class DungeonSquare {
 	
 	private Position position;
 
-	public enum SquareType {START, WALKWAY}
+	public enum SquareType {START, WALKWAY,TRAP}
 	
 	
 	public SquareType getType() {
@@ -26,8 +26,11 @@ public class DungeonSquare {
 			if(this.type.equals(SquareType.WALKWAY)){
 				return 'w';
 			}
+			if(this.type.equals(SquareType.TRAP)){
+				return 't';
+			}
 		}
-			return 'x';
+			return '-';
 		}
 
 	public Position getPosition() {
