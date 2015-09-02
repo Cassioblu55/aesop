@@ -10,7 +10,6 @@ import com.cassiohudson.aesop.utils.ConnectionUtils;
 
 public class GenericDAO {
 	
-	
 	public GenericDAO(String dataTable){
 		this.dataTable= dataTable;
 	}

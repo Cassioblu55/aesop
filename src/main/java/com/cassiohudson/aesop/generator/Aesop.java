@@ -5,6 +5,7 @@ import java.util.Random;
 
 import javax.swing.JFrame;
 
+import com.cassiohudson.aesop.domain.Trap;
 import com.cassiohudson.aesop.userInterface.CharacterExperienceFrame;
 import com.cassiohudson.aesop.utils.FrameUtils;
 
@@ -59,6 +60,10 @@ public class Aesop {
 	//Returns inclusive random number
 	public static Integer getRandom(Integer min, Integer max){
 		return new Random().nextInt((max - min) + 1)+min;
+	}
+
+	public static Object getRandomFromList(List<Object> list){ 
+		return list.get(new Random().nextInt(list.size()));
 	}
 	
 }

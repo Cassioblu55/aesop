@@ -9,8 +9,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import com.cassiohudson.aesop.dao.TrapsHome;
 import com.cassiohudson.aesop.domain.Dungeon;
 import com.cassiohudson.aesop.domain.DungeonTraitType;
+import com.cassiohudson.aesop.domain.Trap;
 import com.cassiohudson.aesop.generator.DungeonMapCreate.MapSize;
 import com.cassiohudson.aesop.generator.DungeonSquare.SquareType;
 
@@ -26,6 +28,7 @@ public class DungeonMap {
 	private MapSize size;
 	private final HashMap<MapSize, Integer> hash = this.getSizeHashMap();
 	private static final Random random = new Random();
+	private List<Trap> trapList = new ArrayList<Trap>();
 
 	public DungeonMap(List<List<DungeonSquare>> map, Dungeon dungeon,
 			MapSize size) {
@@ -36,6 +39,8 @@ public class DungeonMap {
 	}
 
 	public void generateMap() {
+		
+		final List<Trap> trapList = new TrapsHome().getTraps();
 		Integer size = this.map.size();
 		// Set Start
 		DungeonSquare start = this.getSquare(new Random().nextInt(size), 0);
@@ -51,7 +56,10 @@ public class DungeonMap {
 		}
 		for(Integer i=0; i<this.getTrapNumber(); i++){
 			DungeonSquare s = getRandomActiveSquare();
+			Trap trap =trapList.get(new Random().nextInt(trapList.size()));
+			trap.setPosition(s.getPosition());
 			s.setType(SquareType.TRAP);
+			this.trapList.add(trap);
 		}
 		
 
@@ -188,6 +196,9 @@ public class DungeonMap {
 	public String getBio() {
 		String bio = Aesop.nextLine(this.dungeon.getBio());
 		bio = bio.concat(this.addMapDispaly());
+		for(Trap t : this.trapList){
+			bio = bio.concat(Aesop.addLine(t.getBio()));
+		}
 		return bio;
 	}
 
