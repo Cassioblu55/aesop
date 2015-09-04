@@ -39,7 +39,7 @@ public class DungeonMap {
 	}
 
 	public void generateMap() {
-		
+
 		final List<Trap> trapList = new TrapsHome().getTraps();
 		Integer size = this.map.size();
 		// Set Start
@@ -47,36 +47,47 @@ public class DungeonMap {
 		start.setType(SquareType.START);
 		this.usedSquares.add(start.getPosition());
 		this.buildBranch(start, Direction.DOWN);
-		//Will not try to make more then 1000 attempts to make a branch
-		Integer count =new Integer(0);
-		while (this.usedSquares.size() < hash.get(this.size) && count<1000) {
+		// Will not try to make more then 1000 attempts to make a branch
+		Integer count = new Integer(0);
+		while (this.usedSquares.size() < hash.get(this.size) && count < 1000) {
 			DungeonSquare s = getRandomActiveSquare();
 			this.buildBranch(s, getRandomDirection());
 			count++;
 		}
-		for(Integer i=0; i<this.getTrapNumber(); i++){
+		for (Integer i = 0; i < this.getTrapNumber(); i++) {
 			DungeonSquare s = getRandomActiveSquare();
-			Trap trap =trapList.get(new Random().nextInt(trapList.size()));
+			Trap trap = trapList.get(new Random().nextInt(trapList.size()));
 			trap.setPosition(s.getPosition());
 			s.setType(SquareType.TRAP);
 			this.trapList.add(trap);
 		}
-		
 
 	}
-	
-	private Integer getTrapNumber(){
-		Integer trapNumber=0;
-		String purpose = this.dungeon.getTraits().get(DungeonTraitType.PURPOSE).getTrait();
-		if(purpose.equals("Death trap")){trapNumber+=4;}
-		if(purpose.equals("Lair")){trapNumber+=2;}
-		if(purpose.equals("Stronghold")){trapNumber+=2;}
-		if(purpose.equals("Tomb")){trapNumber+=3;}
-		if(purpose.equals("Treasure vault")){trapNumber+=3;}
-		if(purpose.equals("Maze")){trapNumber+=2;}
+
+	private Integer getTrapNumber() {
+		Integer trapNumber = 0;
+		String purpose = this.dungeon.getTraits().get(DungeonTraitType.PURPOSE)
+				.getTrait();
+		if (purpose.equals("Death trap")) {
+			trapNumber += 4;
+		}
+		if (purpose.equals("Lair")) {
+			trapNumber += 2;
+		}
+		if (purpose.equals("Stronghold")) {
+			trapNumber += 2;
+		}
+		if (purpose.equals("Tomb")) {
+			trapNumber += 3;
+		}
+		if (purpose.equals("Treasure vault")) {
+			trapNumber += 3;
+		}
+		if (purpose.equals("Maze")) {
+			trapNumber += 2;
+		}
 		return trapNumber;
 	}
-
 
 	private DungeonSquare getRandomActiveSquare() {
 		List<Position> activeList = new ArrayList<Position>(this.usedSquares);
@@ -89,7 +100,8 @@ public class DungeonMap {
 		for (int i = 0; i < size; i++) {
 			if (square != null) {
 				square = this.getSquare(square.getPosition(), move);
-				if (square != null && findVaildBranch(square, move)
+				if (square != null
+						&& findVaildBranch(square, move)
 						&& this.usedSquares.contains(square.getPosition()) == false) {
 					square.setType(SquareType.WALKWAY);
 					this.usedSquares.add(square.getPosition());
@@ -98,43 +110,61 @@ public class DungeonMap {
 		}
 	}
 
-	private Boolean inList(DungeonSquare s){
-		if(s ==null){return false;}
+	private Boolean inList(DungeonSquare s) {
+		if (s == null) {
+			return false;
+		}
 		return this.usedSquares.contains(s.getPosition());
 	}
-	
-	private Boolean findVaildBranch(DungeonSquare square, Direction move) {		
-		if(move.equals(Direction.DOWN)){
-			//Look down right and down left
-			DungeonSquare d1 = getSquare(square.getPosition(), Direction.DOWN, Direction.RIGHT);
-			DungeonSquare d2 = getSquare(square.getPosition(), Direction.DOWN, Direction.LEFT);
-			if((inList(d1)) || inList(d2)){return false;}
-			else{return true;}
+
+	private Boolean findVaildBranch(DungeonSquare square, Direction move) {
+		if (move.equals(Direction.DOWN)) {
+			// Look down right and down left
+			DungeonSquare d1 = getSquare(square.getPosition(), Direction.DOWN,
+					Direction.RIGHT);
+			DungeonSquare d2 = getSquare(square.getPosition(), Direction.DOWN,
+					Direction.LEFT);
+			if ((inList(d1)) || inList(d2)) {
+				return false;
+			} else {
+				return true;
+			}
+		} else if (move.equals(Direction.UP)) {
+			// Look up left and up right
+			DungeonSquare d1 = getSquare(square.getPosition(), Direction.UP,
+					Direction.RIGHT);
+			DungeonSquare d2 = getSquare(square.getPosition(), Direction.UP,
+					Direction.LEFT);
+			if (inList(d1) || inList(d2)) {
+				return false;
+			} else {
+				return true;
+			}
+		} else if (move.equals(Direction.LEFT)) {
+			// Look down left and up left
+			DungeonSquare d1 = getSquare(square.getPosition(), Direction.DOWN,
+					Direction.LEFT);
+			DungeonSquare d2 = getSquare(square.getPosition(), Direction.UP,
+					Direction.LEFT);
+			if (inList(d1) || inList(d2)) {
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			// Look down right and up right
+			DungeonSquare d1 = getSquare(square.getPosition(), Direction.DOWN,
+					Direction.RIGHT);
+			DungeonSquare d2 = getSquare(square.getPosition(), Direction.UP,
+					Direction.RIGHT);
+			if (inList(d1) || inList(d2)) {
+				return false;
+			} else {
+				return true;
+			}
 		}
-		else if(move.equals(Direction.UP)){
-			//Look up left and up right
-			DungeonSquare d1 = getSquare(square.getPosition(), Direction.UP, Direction.RIGHT);
-			DungeonSquare d2 = getSquare(square.getPosition(), Direction.UP, Direction.LEFT);
-			if(inList(d1) || inList(d2)){return false;}
-			else{return true;}
-		}	
-		else if(move.equals(Direction.LEFT)){
-			//Look down left and up left
-			DungeonSquare d1 = getSquare(square.getPosition(), Direction.DOWN, Direction.LEFT);
-			DungeonSquare d2 = getSquare(square.getPosition(), Direction.UP, Direction.LEFT);
-			if(inList(d1) || inList(d2)){return false;}
-			else{return true;}
-		}
-		else{
-			//Look down right and up right
-			DungeonSquare d1 = getSquare(square.getPosition(), Direction.DOWN, Direction.RIGHT);
-			DungeonSquare d2 = getSquare(square.getPosition(), Direction.UP, Direction.RIGHT);
-			if(inList(d1) || inList(d2)){return false;}
-			else{return true;}
-		}	
 	}
 
-	
 	private Direction getRandomDirection() {
 		final List<Direction> list = Collections.unmodifiableList(Arrays
 				.asList(Direction.values()));
@@ -144,13 +174,15 @@ public class DungeonMap {
 	private DungeonSquare getSquare(Position pos) {
 		return this.map.get(pos.getY()).get(pos.getX());
 	}
-	
-	private DungeonSquare getSquare(Position pos, Direction moveOne, Direction moveTwo) {
-		DungeonSquare s = this.getSquare(pos, moveOne); DungeonSquare s2= null;
-		if(s != null){
+
+	private DungeonSquare getSquare(Position pos, Direction moveOne,
+			Direction moveTwo) {
+		DungeonSquare s = this.getSquare(pos, moveOne);
+		DungeonSquare s2 = null;
+		if (s != null) {
 			s2 = this.getSquare(s.getPosition(), moveTwo);
 		}
-		return (s2 != null) ? s2 :null;
+		return (s2 != null) ? s2 : null;
 	}
 
 	private DungeonSquare getSquare(Position pos, Direction move) {
@@ -173,16 +205,24 @@ public class DungeonMap {
 	}
 
 	public String mapDisplay() {
-		String display = new String();
-		for (List<DungeonSquare> row : map) {
-			String rowDisplay = new String();
-			for (DungeonSquare square : row) {
-				rowDisplay = rowDisplay.concat(String.valueOf(square
-						.getDisplay()));
+		String display = Aesop.nextLine(getFirstLine());
+		for (Integer y = 0; y < map.size(); y++) {
+			String rowDisplay = Position.abcs.get(y);
+			for(Integer x=0; x<map.size(); x++){
+				rowDisplay = rowDisplay.concat(String.valueOf(getSquare(x,y).getDisplay()));
 			}
 			display = display.concat(Aesop.nextLine(rowDisplay));
 		}
 		return display;
+	}
+	
+	private String getFirstLine(){
+		String row = new String();
+		for (Integer i = 0; i < map.size(); i++) {
+			if (i.equals(0)) {row = row.concat("-");}
+			row = row.concat(i.toString());
+		}
+		return row;
 	}
 
 	private HashMap<MapSize, Integer> getSizeHashMap() {
@@ -196,7 +236,7 @@ public class DungeonMap {
 	public String getBio() {
 		String bio = Aesop.nextLine(this.dungeon.getBio());
 		bio = bio.concat(this.addMapDispaly());
-		for(Trap t : this.trapList){
+		for (Trap t : this.trapList) {
 			bio = bio.concat(Aesop.addLine(t.getBio()));
 		}
 		return bio;
