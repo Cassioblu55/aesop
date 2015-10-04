@@ -15,15 +15,15 @@ public class Tavern implements Assest {
 	
 	
 	public String getBio() {
-		String bio = Aesop.addLine(hash.get(TavenTraitType.FIRST_NAME).concat(" ").concat(hash.get(TavenTraitType.LAST_NAME)));
-		bio = bio.concat(Aesop.addLine(hash.get(TavenTraitType.TYPE)));
+		String bio = Aesop.addLine(hash.get(TavenTraitType.first_name).concat(" ").concat(hash.get(TavenTraitType.last_name)));
+		bio = bio.concat(Aesop.addLine(hash.get(TavenTraitType.type)));
 		return bio;
 	}
 
 	
 	public String getFileName() {
-		String firstName = hash.get(TavenTraitType.FIRST_NAME).replace(" ", "_");
-		String lastName = hash.get(TavenTraitType.LAST_NAME).replace(" ", "_");
+		String firstName = hash.get(TavenTraitType.first_name).replace(" ", "_");
+		String lastName = hash.get(TavenTraitType.last_name).replace(" ", "_");
 		return firstName.concat("_").concat(lastName).concat(Aesop.TXT_EXT);
 	}
 

@@ -2,20 +2,22 @@ package com.cassiohudson.aesop.domain;
 
 
 public enum SettelemntTraitType implements TraitType{
-	RACE_RELATIONS, RULER_STATUS, NOTABLE_TRAITS, KNOWN_FOR, CURRENT_CALAMITY;
+	race_relations, ruler_status, notable_traits, known_for, current_calamity, name;
 	
 	public static String getDisplay(SettelemntTraitType t){
 		switch (t) {
-		case RACE_RELATIONS:
+		case race_relations:
 			return "Race relations";
-		case RULER_STATUS:
+		case ruler_status:
 			return "Ruler status";
-		case NOTABLE_TRAITS:
+		case notable_traits:
 			return "Notable traits";
-		case KNOWN_FOR:
+		case known_for:
 			return "Known for";
-		case CURRENT_CALAMITY:
+		case current_calamity:
 			return "Current calamity";
+		case name:
+			return "Name";
 		default:
 			return null;
 		}

@@ -60,14 +60,14 @@ public class CharacterResources {
 	
 	public static HashMap<CharacterTraitType, List<String>> getAllData() throws IOException{
 		HashMap<CharacterTraitType, List<String>> hash = new HashMap<CharacterTraitType, List<String>>();
-		hash.put(CharacterTraitType.ABILITY, getAblity());
-		hash.put(CharacterTraitType.APPEARANCE, getAppearence());
-		hash.put(CharacterTraitType.BOND, getBonds());
-		hash.put(CharacterTraitType.FLAW, getFlaws());
-		hash.put(CharacterTraitType.IDEAL, getIdeals());
-		hash.put(CharacterTraitType.INTERACTION, getInteractionTrait());
-		hash.put(CharacterTraitType.MANNERISM, getMannerisms());
-		hash.put(CharacterTraitType.TALENT, getTalent());
+		hash.put(CharacterTraitType.ability, getAblity());
+		hash.put(CharacterTraitType.appearance, getAppearence());
+		hash.put(CharacterTraitType.bond, getBonds());
+		hash.put(CharacterTraitType.flaw, getFlaws());
+		hash.put(CharacterTraitType.ideal, getIdeals());
+		hash.put(CharacterTraitType.interaction, getInteractionTrait());
+		hash.put(CharacterTraitType.mannerism, getMannerisms());
+		hash.put(CharacterTraitType.talent, getTalent());
 		return hash;
 	}
 	

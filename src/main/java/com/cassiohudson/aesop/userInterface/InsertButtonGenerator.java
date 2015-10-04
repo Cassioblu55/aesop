@@ -31,7 +31,7 @@ public class InsertButtonGenerator {
 		JButton button = new JButton("Insert Character Data");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//InsertAllCSVData.insertChracterTraits();				
+				InsertAllCSVData.insertChracterTraits();				
 			}
 		});
 		return button;

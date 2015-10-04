@@ -10,5 +10,5 @@ public interface SettelementTraitService extends GenericDaoService{
 	public SettelementTrait findById(Integer id);
 	public SettelementTrait findByTrait(String trait);
 	
-	public static final String DATA_TABLE = "settelement_traits";
+	public static final String DATA_TABLE = "settlement_traits";
 }

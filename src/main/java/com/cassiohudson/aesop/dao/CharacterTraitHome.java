@@ -1,7 +1,9 @@
 package com.cassiohudson.aesop.dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +18,10 @@ public class CharacterTraitHome extends GenericDAO implements CharacterTraitServ
 	
 	public CharacterTraitHome(){
 		super(DATA_TABLE);
+	}
+	
+	public String getInsertPath() {
+		return INSERT_START.concat(DATA_TABLE).concat(INSERT_END);
 	}
 	
 	public HashMap<CharacterTraitType, String> getRandomCharacterTraits(){
@@ -49,4 +55,22 @@ public class CharacterTraitHome extends GenericDAO implements CharacterTraitServ
 		ConnectionUtils.close(rs);
 		return hash;
 	}
+
+	public void insertTraitByType(String type, List<String> list){
+		try {
+			Connection con = ConnectionUtils.newConnection();
+			for(String trait : list){
+				Statement stmt = con.createStatement();
+				String sql = this.getInsertPath()+ "('"+trait+"','"+type+"')";
+				stmt.executeUpdate(sql);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String getQueryPath() {
+		return QUERY_START.concat(DATA_TABLE).concat(QUERY_END);
+	}
+
 }

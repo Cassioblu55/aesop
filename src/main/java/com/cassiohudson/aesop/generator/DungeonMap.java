@@ -210,6 +210,7 @@ public class DungeonMap {
 			String rowDisplay = Position.abcs.get(y);
 			for(Integer x=0; x<map.size(); x++){
 				rowDisplay = rowDisplay.concat(String.valueOf(getSquare(x,y).getDisplay()));
+				
 			}
 			display = display.concat(Aesop.nextLine(rowDisplay));
 		}

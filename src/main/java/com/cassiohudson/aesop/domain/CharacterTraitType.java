@@ -2,25 +2,25 @@ package com.cassiohudson.aesop.domain;
 
 
 public enum CharacterTraitType implements TraitType{
-	ABILITY, TALENT, IDEAL, BOND, FLAW, MANNERISM, APPEARANCE, INTERACTION;
+	ability, talent, ideal, bond, flaw, mannerism, appearance, interaction, last_name,male_name,female_name;
 
 	public static String getDisplay(CharacterTraitType type) {
 		switch (type) {
-		case ABILITY:
+		case ability:
 			return "Ability";
-		case TALENT:
+		case talent:
 			return "Talent";
-		case IDEAL: 
+		case ideal: 
 			return "Ideals";
-		case BOND:
+		case bond:
 			return "Bond";
-		case FLAW:
+		case flaw:
 			return "Flaw";
-		case MANNERISM:
+		case mannerism:
 			return "Mannerism";
-		case APPEARANCE:
+		case appearance:
 			return "Appearance";
-		case INTERACTION:
+		case interaction:
 			return "Interaction trait";
 		default:
 			return null;
